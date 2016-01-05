@@ -1,5 +1,6 @@
 \beamer@endinputifotherversion {3.33pt}
 \beamer@sectionintoc {1}{Motivation}{3}{0}{1}
-\beamer@sectionintoc {2}{Second Section}{7}{0}{2}
-\beamer@subsectionintoc {2}{1}{Subsection Example}{7}{0}{2}
-\beamer@sectionintoc {3}{Second Section}{11}{0}{3}
+\beamer@sectionintoc {2}{Literature review}{5}{0}{2}
+\beamer@sectionintoc {3}{Proposed Model - LFRMtimes}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{LFRMtimes}{8}{0}{3}
+\beamer@sectionintoc {4}{Second Section}{12}{0}{4}

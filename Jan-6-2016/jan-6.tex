@@ -78,6 +78,8 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -137,6 +139,10 @@ A model for:
 
 %------------------------------------------------
 
+%------------------------------------------------
+\section{Literature review}
+%------------------------------------------------
+
 \begin{frame}
 \frametitle{Litarature review}
 \begin{block}{IRM}
@@ -170,7 +176,7 @@ Mixed-Membership Block Model(Airoldi et al. 2008)
 \begin{itemize}
 \item Not Infinite.
 \item Not take into account changing with time.
-\item One node can belong to multiple community.
+\item One node can belong to multiple communities.
 \item Data-driven.
 \end{itemize}
 \end{block}
@@ -180,7 +186,23 @@ Latent Feature Relation Model(Miller et al. 2009)
 \begin{itemize}
 \item Infinite.
 \item Does not take into account changing with time.
-\item One node can belong to multiple community.
+\item One node can belong to multiple communities.
+\item Data-driven.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Litarature review(cont.)}
+\begin{block}{Sticky HDP-HMM}
+Sticky Hierachical Dirichlet Process - Hidden Markov Model(Fox et al. 2008)
+\begin{itemize}
+\item Infinite.
+\item Changing with time.
+\item One node can only belong to one community.
 \item Data-driven.
 \end{itemize}
 \end{block}
@@ -190,29 +212,50 @@ Latent Feature Relation Model(Miller et al. 2009)
 %------------------------------------------------
 
 %------------------------------------------------
-\section{Second Section}
+\section{Proposed Model - LFRMtimes}
 %------------------------------------------------
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\subsection{LFRMtimes} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+\frametitle{LFRMtimes}
+A model can capture all aspects:
+\begin{itemize}
+\item Infinite.
+\item Changing with time.
+\item One node can belong to multiple communities.
+\item Data-driven.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
+\frametitle{LFRMtimes}
+% Simple Bayesian network
+\begin{figure}[ht]
+  \begin{center}
+    \begin{tabular}{cc}
+      \begin{tikzpicture}
+
+  		% Define nodes
+  		\node[obs]                               (y) {$y$};
+  		\node[latent, above=of y, xshift=-1.2cm] (w) {$\mathbf{w}$};
+  		\node[latent, above=of y, xshift=1.2cm]  (x) {$\kappa$};
+  		\node[latent, right=2cm of y]            (t) {$\tau$};
+
+  		% Connect the nodes
+  		\edge {x,w,t} {y} ; %
+
+  % Plates
+  \plate {yx} {(x)(y)} {$N$} ;
+  \plate {} {(w)(y)(yx.north west)(yx.south west)} {$M$} ;
+
+\end{tikzpicture}
+    \end{tabular}
+  \end{center}
+  \caption{LFRMtimes.}
+\end{figure}
 \end{frame}
 
 %------------------------------------------------
