@@ -85,7 +85,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Report January 6, 2016} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[LFRMtimes]{Report January 6, 2016} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Trong Dinh Thac Do} % Your name
 \institute[AAI] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -239,23 +239,63 @@ A model can capture all aspects:
       \begin{tikzpicture}
 
   		% Define nodes
-  		\node[obs]                               (y) {$y$};
-  		\node[latent, above=of y, xshift=-1.2cm] (w) {$\mathbf{w}$};
-  		\node[latent, above=of y, xshift=1.2cm]  (x) {$\kappa$};
-  		\node[latent, right=2cm of y]            (t) {$\tau$};
+  		\node[obs]                             	(y) {$y_{ij}^{t}$};
+  		\node[latent, above=of y, xshift=-1cm] 	(s) {$s_{ik}^{t}$};
+  		\node[latent, above=of y, xshift=1cm]  	(r) {$r_{jk'}^{t}$};
+  		\node[latent, above=of s] 				(p) {$\pi_{k}^{t}$};
+  		\node[latent, above=of p, xshift=1cm]  	(b) {$\beta$};
+  		\node[latent, above=of p, xshift=2cm]  	(a) {$\alpha$};
+  		\node[latent, right=of p, xshift=2cm]  	(t) {$\tau$};
+  		
+  		\node[latent, right=of y]  				(ly) {$Y$};
+  		
+  		\node[latent, left=of s]  				(n1) {$N_{ik}^{t-1}$};
+  		\node[latent, left=of s, yshift=1cm]  	(n2) {$N_{jk'}^{t-1}$};
 
+		\node[latent, above=of r] 				(p2) {$\pi_{k'}^{t}$};
+		
   		% Connect the nodes
-  		\edge {x,w,t} {y} ; %
+  		\edge {s,r} {y};
+  		\edge {p} {s};
+  		\edge {p2} {r};
+  		\edge {a,b} {p};
+  		\edge {a,b} {p2};
+  		\edge {ly} {y};
+  		\edge {t} {s,r};
+  		\edge {n1} {s};
+  		\edge {n2} {r};
 
   % Plates
-  \plate {yx} {(x)(y)} {$N$} ;
-  \plate {} {(w)(y)(yx.north west)(yx.south west)} {$M$} ;
+  \plate {psr} {(r)(s)(p)} {} ;
+  %\plate {} {(r)(y)(ysr.north west)(ysr.south west)} {$M$} ;
 
 \end{tikzpicture}
     \end{tabular}
   \end{center}
-  \caption{LFRMtimes.}
+  \caption{LFRMtimes. i,j = 1 : n, k,k' = 1 : K, t = 1 : T}
 \end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{LFRMtimes(cont.)}
+$\pi_{k}^{t} \sim BP(\alpha, \beta)$
+\\
+~\\
+$s_{ik}^{t} \sim BeP(\pi_{k}^{t} + \tau . N_{ik}^{t-1}\delta_{k}) $
+\\
+~\\
+$r_{jk}^{t} \sim BeP(\pi_{k}^{t} + \tau . N_{jk}^{t-1}\delta_{k}) $
+\\
+~\\
+$w_{kk'}^{t} \sim \mathcal{N}(0,\sigma_{w^{t}}^{2}) $ for all k, k' which features k and k' are non-zero.
+\\
+~\\
+$y_{ij}^{t} \sim \sigma(S_{i}WR_{j}^{T}) = \sigma(\sum_{k,k'} s_{ik}^{t}r_{jk'}^{t}w_{kk'}^{t}) $ for each observation.
+\\
+~\\
+$\sigma(x) = \frac{1}{1+exp(-x)}$
 \end{frame}
 
 %------------------------------------------------
@@ -380,3 +420,5 @@ This statement requires citation \cite{p1}.
 %----------------------------------------------------------------------------------------
 
 \end{document} 
+Status API Training Shop Blog About Pricing
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
