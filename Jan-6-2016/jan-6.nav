@@ -31,27 +31,19 @@
 \headcommand {\beamer@framepages {10}{10}}
 \headcommand {\slideentry {3}{1}{4}{11/11}{LFRMtimes}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {3}{1}{5}{12/12}{LFRMtimes}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{12}{Inferences}}\headcommand {\beamer@subsectionpages {8}{11}}
+\headcommand {\slideentry {3}{2}{1}{12/12}{Inferences}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\sectionentry {4}{Second Section}{13}{Second Section}{0}}
-\headcommand {\beamer@sectionpages {8}{12}}
-\headcommand {\beamer@subsectionpages {8}{12}}
-\headcommand {\slideentry {4}{0}{1}{13/13}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{13}{Experiments}}\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\slideentry {3}{3}{1}{13/13}{Experiments}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {4}{0}{2}{14/14}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{14}{Future works}}\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\slideentry {3}{4}{1}{14/14}{Future works}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {4}{0}{3}{15/15}{}{0}}
+\headcommand {\slideentry {3}{4}{2}{15/15}{Future works}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {4}{0}{4}{16/16}{}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {4}{0}{5}{17/17}{}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {4}{0}{6}{18/18}{}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {4}{0}{7}{19/19}{}{0}}
-\headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {13}{19}}
-\headcommand {\beamer@sectionpages {13}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\def \inserttotalframenumber {19}}
+\headcommand {\beamer@partpages {1}{15}}
+\headcommand {\beamer@subsectionpages {14}{15}}
+\headcommand {\beamer@sectionpages {8}{15}}
+\headcommand {\beamer@documentpages {15}}
+\headcommand {\def \inserttotalframenumber {15}}

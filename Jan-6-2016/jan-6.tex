@@ -283,16 +283,16 @@ A model can capture all aspects:
 $\pi_{k}^{t} \sim BP(\alpha, \beta)$
 \\
 ~\\
-$s_{ik}^{t} \sim BeP(\pi_{k}^{t} + \tau . N_{ik}^{t-1}\delta_{k}) $
+$s_{ik}^{t} \sim BeP(\pi_{k}^{t} + \tau . N_{ik}^{t-1}) $
 \\
 ~\\
-$r_{jk}^{t} \sim BeP(\pi_{k}^{t} + \tau . N_{jk}^{t-1}\delta_{k}) $
+$r_{jk'}^{t} \sim BeP(\pi_{k'}^{t} + \tau . N_{jk'}^{t-1}) $
 \\
 ~\\
-$w_{kk'}^{t} \sim \mathcal{N}(0,\sigma_{w^{t}}^{2}) $ for all k, k' which features k and k' are non-zero.
+$w_{kk'}^{t} \sim \mathcal{N}(0,\sigma_{w^{t}}^{2}) $ for all k, k' which features k and k' are non-zero. $w_{kk'}^{t}$ is the weight that effects probability of there is link between entity i and entity j at time t.
 \\
 ~\\
-$y_{ij}^{t} \sim \sigma(S_{i}WR_{j}^{T}) = \sigma(\sum_{k,k'} s_{ik}^{t}r_{jk'}^{t}w_{kk'}^{t}) $ for each observation.
+$y_{ij}^{t} \sim \sigma(S_{i}WR_{j}^{T}) = \sigma(\sum_{k,k'} s_{ik}^{t}r_{jk'}^{t}w_{kk'}^{t}) $ for each observation. $y_{ij}^{t}$ is the probability that there is a link between entity i and entity k at time t.
 \\
 ~\\
 $\sigma(x) = \frac{1}{1+exp(-x)}$
@@ -301,114 +301,48 @@ $\sigma(x) = \frac{1}{1+exp(-x)}$
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
+\frametitle{LFRMtimes(cont.)}
+$\pi_{k}^{t}|s_{1k}^{t}..s_{nk}^{t} \sim BP(\alpha + n + \tau, \frac{\alpha\beta + \frac{\tau}{n} . \sum_{i} N_{ik}\delta_{i} + \sum_{i}s_{ik}^{t}}{\alpha + n + \tau})$
+\\
+~\\
+LFRMtimes can be described as below:
 \begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
+\item An Indian Buffet Restaurant will record all orders of all customers. In order word, they will keep all the history of customers, who ordered which disks.
+\item When a customer come to the restaurant at time t, he will ask for the history of all the customers that are in the restaurant at that time who have the same as his disks in the past. Then he can choose:
+\hfill \\ 1. Get a Poi($\frac{\alpha\beta}{\alpha + n + \tau}$) new disk.
+\hfill \\ 2. Stay at history disk with probability $\frac{\frac{\tau}{n}.\sum_{i} N_{ik}\delta_{i} + \sum_{i}s_{ik}^{t}}{\alpha + n + \tau}$
 \end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
 \end{frame}
 
 %------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
+
+\subsection{Inferences} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+\frametitle{LFRMtimes - Inferences}
+LFRMtimes is approximately inference via Markov Chain Monte Carlo(MCMC).
+(Will provide the details in the paper.)
 \end{frame}
 
 %------------------------------------------------
+
+\subsection{Experiments} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
+\frametitle{LFRMtimes - Experiments}
+I got some results from Python Implementation of LFRMtimes. I will do some analysis and compare to previous model and provide next time.
 \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%------------------------------------------------
+\subsection{Future works} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+\frametitle{LFRMtimes - Future works}
+\begin{itemize}
+\item Using other inference solution to boost up the speed of algorithm like Variational Inference.
+\item Find out how the node information effects the latent communities of the node.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------

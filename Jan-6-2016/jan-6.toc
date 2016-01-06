@@ -3,4 +3,6 @@
 \beamer@sectionintoc {2}{Literature review}{5}{0}{2}
 \beamer@sectionintoc {3}{Proposed Model - LFRMtimes}{8}{0}{3}
 \beamer@subsectionintoc {3}{1}{LFRMtimes}{8}{0}{3}
-\beamer@sectionintoc {4}{Second Section}{13}{0}{4}
+\beamer@subsectionintoc {3}{2}{Inferences}{12}{0}{3}
+\beamer@subsectionintoc {3}{3}{Experiments}{13}{0}{3}
+\beamer@subsectionintoc {3}{4}{Future works}{14}{0}{3}
